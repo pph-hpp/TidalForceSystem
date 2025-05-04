@@ -5,21 +5,20 @@
 TidalForceSimulator 是一个基于 CUDA 和 OpenGL 实现的天体潮汐破碎模拟器，支持多体引力、刚体碎片化与可视化渲染，可用于科研和教学演示。
 
 ## 目录结构
+```plaintext
+TidalForceSimulator
+├── CMakeLists.txt     # 构建脚本
+├── include/           # 头文件目录
+├── src/               # 源代码目录（.cpp, .cu）
+├── Render/            # 渲染相关代码和着色器
+│   └── glsl/          # GLSL 着色器文件
+├── lib/               # 第三方库 (.lib/.dll)
+│   ├── glfw3.dll
+│   ├── glew32.dll
+│   └── ...
+└── build/             # 构建输出目录（由 CMake 生成）
 
-├── CMakeLists.txt # 构建脚本
-├── include/ # 头文件目录
-├── src/ # 源代码目录（.cpp, .cu）
-├── Render/ # 渲染相关代码和着色器
-│ └── glsl/ # GLSL 着色器文件
-├── lib/ # 第三方库 (.lib/.dll)
-│ ├── glfw3.dll
-│ ├── glew32.dll
-│ └── ...
-└── build/ # 构建输出目录（由 CMake 生成）
-
-markdown
-Copy
-Edit
+```
 
 ## 依赖环境
 
@@ -52,24 +51,6 @@ cmake .. -G "Visual Studio 16 2019" -A x64
 
 注意：构建时会自动将 lib/ 中的 glfw3.dll、glew32.dll 和 Render/glsl/ 目录复制到可执行文件输出目录。
 
-构建脚本说明
-CMakeLists.txt 关键片段
-cmake
-Copy
-Edit
-add_custom_command(TARGET ${PROJECT_NAME} PRE_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory
-        "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_SOURCE_DIR}/lib/glfw3.dll"
-        "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_SOURCE_DIR}/lib/glew32.dll"
-        "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/Render/glsl"
-        "$<TARGET_FILE_DIR:${PROJECT_NAME}>/glsl"
-)
 运行示例
 启动后，程序会打开一个窗口并显示模拟结果，按键操作：
 
