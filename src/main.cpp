@@ -14,12 +14,15 @@ void executeV2() {
 
     TidalSystem::TidalSystem tidal_system(32);
     /*float angle_velocity = 1.2f * sqrt(G * STAR_MASS / pow(PLANET_STAR_DISTANCE, 3));*/
-    float angle_velocity = 1.1f * sqrt(G * STAR_MASS / pow(PLANET_STAR_DISTANCE, 3));
-    float velocity = 0.8f * sqrt(G * STAR_MASS / PLANET_STAR_DISTANCE);
+    float angle_velocity = 0.0f * sqrt(G * STAR_MASS / pow(PLANET_STAR_DISTANCE, 3));
+    float velocity = 0.96f * sqrt(G * STAR_MASS / PLANET_STAR_DISTANCE);
     std::cout << "Planet angle velocity : " << angle_velocity << std::endl;
 
-    tidal_system.addObject(TidalSystem::PlanetType::Planet, { STAR_POSITION.x + 400, STAR_POSITION.y + 300, 0 },
-        PLANET_RADIUS, { -velocity, 0, 0 }, 14, {0.0f, 0.0f, angle_velocity });
+    /*tidal_system.addObject(TidalSystem::PlanetType::Planet, { STAR_POSITION.x + 400, STAR_POSITION.y + 300, 0 },
+        PLANET_RADIUS, { -velocity, 0, 0 }, 14, {0.0f, 0.0f, angle_velocity });*/
+
+    tidal_system.addObject(TidalSystem::PlanetType::Planet, { PLANET_STAR_DISTANCE, 0, 0 },
+        PLANET_RADIUS, { 0, velocity, 0 }, 14, { 0.0f, 0.0f, angle_velocity });
 
     tidal_system.addObject(TidalSystem::PlanetType::Star, STAR_POSITION,
         BLOCK_HOLE_RADIUS, {0, 0, 0}, 100);
@@ -27,7 +30,7 @@ void executeV2() {
     render->addCubeObject("../glsl/skybox.vs", "../glsl/skybox.fs",
         "../textures/skybox/", ".png");
 
-    float scale_size = 1.0 / (900);
+    float scale_size = 1.0 / (300);
     glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     model = glm::scale(model, glm::vec3(scale_size, scale_size, scale_size));
     Render::Shader::ptr _shader;
@@ -55,7 +58,7 @@ void executeV2() {
         render->render(tidal_system.getCurrentRead());
 
         //±£´æÃ¿Ò»Ö¡Í¼Ïñ
-        //render->SaveFrameBufferToImage(fram_id++, "E:/s/hpc/TidalForceSimulater/images/origin/");
+        render->SaveFrameBufferToImage(fram_id++, "E:/s/hpc/TidalForceSimulater/TidalForceSystem/images/");
 
         auto start = std::chrono::high_resolution_clock::now();
         tidal_system.simulate(0.5);

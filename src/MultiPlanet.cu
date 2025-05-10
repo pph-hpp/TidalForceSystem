@@ -576,10 +576,10 @@ void UpdateParticleStatus(
         star_info, star_num, planet_info, ParticleNum, delta_time);*/
     /*UpdateParticleStatusDevice << <blockNum, blockSize, shared_mem >> > (p_read, p_write, connect_status,
         connect_id_map, star_info, star_num, planet_info, ParticleNum, delta_time);*/
-    UpdateParticleStatusDeviceWithRotation << <blockNum, blockSize, shared_mem >> > (p_read, p_write,
-        connect_status, connect_id_map, star_info, star_num, planet_info, ParticleNum, tileSize, delta_time);
-    /*UpdateParticleStatusDeviceSpring << <blockNum, blockSize, shared_mem >> > (p_read, p_write,
-        connect_status, connect_id_map, star_info, star_num, planet_info, ParticleNum, delta_time);*/
+    /*UpdateParticleStatusDeviceWithRotation << <blockNum, blockSize, shared_mem >> > (p_read, p_write,
+        connect_status, connect_id_map, star_info, star_num, planet_info, ParticleNum, tileSize, delta_time);*/
+    UpdateParticleStatusDeviceSpring << <blockNum, blockSize, shared_mem >> > (p_read, p_write,
+        connect_status, connect_id_map, star_info, star_num, planet_info, ParticleNum, delta_time);
     cudaDeviceSynchronize();
 }
 

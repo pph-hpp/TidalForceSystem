@@ -63,31 +63,31 @@ void main(){
     // ÅÐ¶ÏÊÇ·ñÎª¡°ÄÚ²¿¡±
     vec3 color;
 
-    // if (r >= 0.7) {
-    //     // ±íÃæ£ºÍÁÐÇÎÆÀí
-    //     color = saturnColor(u, r);
-    // } else {
-    //     // ÄÚ²¿£ºÑÒ½¬ÎÆÀí
-    //     color = magmaColor(r, u, v);
-    // }
-    // vec3 equatorColor = vec3(225.0, 190.0, 130.0) / 255.0;
-    // FragColor = vec4(equatorColor, 1.0);
-
-    float azimuth = v;   // v ¡Ê [0, 2¦Ð]
-    float zenith  = u;
-
-    if (azimuth >= 0.6 * 3.1415926 && azimuth <= 1.6 * 3.1415926) {
-        // ?? Öç°ëÇò£¬äÖÈ¾ÎªÄ¾ÐÇÉ«µ÷
-        float hue = 0.08 + 0.05 * sin(10.0 * zenith);  // ºÖ»ÆÎÆÀí
-        float sat = 0.6;
-        float val = 0.75;
-        color = hsv2rgb(hue, sat, val);
+    if (r >= 0.7) {
+        // ±íÃæ£ºÍÁÐÇÎÆÀí
+        color = saturnColor(u, r);
     } else {
-        // ? Ò¹°ëÇò£¬äÖÈ¾ÎªµØÇòÀ¶ÂÌÉ«
-        float hue = 0.55 + 0.05 * sin(3.0 * zenith);
-        float sat = 0.6;
-        float val = 0.8;
-        color = hsv2rgb(hue, sat, val);
+        // ÄÚ²¿£ºÑÒ½¬ÎÆÀí
+        color = magmaColor(r, u, v);
     }
-    FragColor = vec4(color, 1.0);
+    vec3 equatorColor = vec3(225.0, 190.0, 130.0) / 255.0;
+    FragColor = vec4(equatorColor, 1.0);
+
+    // float azimuth = v;   // v ¡Ê [0, 2¦Ð]
+    // float zenith  = u;
+
+    // if (azimuth >= 0.6 * 3.1415926 && azimuth <= 1.6 * 3.1415926) {
+    //     // ?? Öç°ëÇò£¬äÖÈ¾ÎªÄ¾ÐÇÉ«µ÷
+    //     float hue = 0.08 + 0.05 * sin(10.0 * zenith);  // ºÖ»ÆÎÆÀí
+    //     float sat = 0.6;
+    //     float val = 0.75;
+    //     color = hsv2rgb(hue, sat, val);
+    // } else {
+    //     // ? Ò¹°ëÇò£¬äÖÈ¾ÎªµØÇòÀ¶ÂÌÉ«
+    //     float hue = 0.55 + 0.05 * sin(3.0 * zenith);
+    //     float sat = 0.6;
+    //     float val = 0.8;
+    //     color = hsv2rgb(hue, sat, val);
+    // }
+    // FragColor = vec4(color, 1.0);
 }

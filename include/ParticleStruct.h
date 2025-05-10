@@ -5,7 +5,8 @@
 #define BLOCK_HOLE_DENSITY 300000000.0f
 #define PI 3.14159265358979323846
 #define PARTICLE_RADIUS 1.0f
-#define STAR_POSITION make_float3(-1300.0f, 0.0f, 0.0f)
+//#define STAR_POSITION make_float3(-1300.0f, 0.0f, 0.0f)
+#define STAR_POSITION make_float3(0.0f, 0.0f, 0.0f)
 #define BLOCK_HOLE_RADIUS 60.0f
 #define STAR_MASS (4.0/3 * PI * BLOCK_HOLE_RADIUS*BLOCK_HOLE_RADIUS*BLOCK_HOLE_RADIUS*BLOCK_HOLE_DENSITY)
 #define PLANET_STAR_DISTANCE 300.0f
@@ -16,7 +17,7 @@
 #define STAR_POS {0, 0, 0}
 #define k_spring_n 50
 #define k_spring_t 5000
-#define k_spring 0.018
+#define k_spring 0.023
 
 #define HOST_PTR 0
 #define DEVICE_PTR 1

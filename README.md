@@ -2,7 +2,11 @@
 
 ## 项目概要
 
-TidalForceSimulator 是一个基于 CUDA 和 OpenGL 实现的天体潮汐破碎模拟器，支持多体引力、刚体碎片化与可视化渲染，可用于科研和教学演示。
+本项目基于 CUDA 与 OpenGL，实现了天体在潮汐力作用下逐步解体并形成星环的物理过程模拟。系统支持多体引力计算、刚体碎片化模拟以及实时可视化渲染。
+
+在引力场中，万有引力随着距离的平方反比衰减。当具有一定体积的天体处于强引力源附近时，其靠近和远离引力源的两侧所受的引力大小不同，产生潮汐力。该潮汐力对天体产生撕扯作用，一旦超过其结构极限，便会导致天体解体，碎片在轨道上重新分布，最终可能形成类似星环的结构。
+
+<img src="./img/tidal.png" width="50%" style="display: block; margin: auto;">
 
 ## 目录结构
 ```plaintext
@@ -24,43 +28,31 @@ TidalForceSimulator
 
 - **CMake** ≥ 3.18
 - **C++14**
-- **CUDA 支持**（架构例如 75,80,86）
-- **OpenGL**
-- **第三方库**：GLFW, GLEW, GLM（已将 DLL 放在 `lib/`，头文件在 `include/`）
-- **Windows 平台**：Visual Studio 2019/2022
+- **CUDA**
+- **OpenGL  (GLFW, GLEW, GLM)**
 
-## 快速开始
-
-1. 克隆仓库并进入构建目录：
-
+## 构建项目：
+- **CMake构建**
 ```bash
 git clone https://github.com/pph-hpp/TidalForceSystem.git
-cd TidalForceSystem
-mkdir build && cd build
-生成 Visual Studio 解决方案：
+mkdir build
+cd build
+cmake ..
 
-bash
-Copy
-Edit
-cmake .. -G "Visual Studio 16 2019" -A x64
-编译并运行：
-
-使用 VS 打开 build/TidalForceSimulator.sln，选择“生成”或“重建”。
-
-点击“本地 Windows 调试器”（F5）运行。
-
-注意：构建时会自动将 lib/ 中的 glfw3.dll、glew32.dll 和 Render/glsl/ 目录复制到可执行文件输出目录。
-
-运行示例
-启动后，程序会打开一个窗口并显示模拟结果，按键操作：
-
+```
+## 运行示例
 W/A/S/D：移动视角
 
 鼠标拖拽：旋转视图
 
-Space：暂停/继续模拟
+- **行星逐渐解体形成星环**
+<video controls width="500" style="display: block; margin: auto;">
+  <source src="./img/disintegration.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
-常见问题
-缺少 DLL：请确认 lib/ 下包含 glfw3.dll 和 glew32.dll。
-
-着色器加载失败：检查 Render/glsl 是否完整复制至输出目录。
+- **行星掠过恒星附近**
+<video controls width="500" style="display: block; margin: auto;">
+  <source src="./img/Grazing.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
