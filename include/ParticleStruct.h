@@ -13,7 +13,7 @@
 #define PLANET_RADIUS 20.0f
 #define SHEAR_STRENGTH 3000.0f   //剪切强度
 //#define TENSILE_STRENGTH 0.1f        //拉伸强度
-#define TENSILE_STRENGTH 0.8f        //拉伸强度
+#define TENSILE_STRENGTH 0.2f        //拉伸强度
 #define STAR_POS {0, 0, 0}
 #define k_spring_n 50
 #define k_spring_t 5000

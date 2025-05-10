@@ -8,13 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 设置CUDA支持
 enable_language(CUDA)
 
-# 查找OpenGL包
-# find_package(OpenGL REQUIRED)
-
-# find_package(glfw3 REQUIRED)
-# find_package(GLEW REQUIRED)
-# find_package(glm REQUIRED)
-
 
 # 设置CUDA架构
 set(CMAKE_CUDA_ARCHITECTURES 75 80 86) # 根据实际GPU调整
@@ -55,11 +48,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
 )
-
-# 链接库
-# target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
-#     ${CUDA_LIBRARIES}
-# )
 
 # 调试配置
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")

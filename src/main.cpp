@@ -15,7 +15,7 @@ void executeV2() {
     TidalSystem::TidalSystem tidal_system(32);
     /*float angle_velocity = 1.2f * sqrt(G * STAR_MASS / pow(PLANET_STAR_DISTANCE, 3));*/
     float angle_velocity = 0.0f * sqrt(G * STAR_MASS / pow(PLANET_STAR_DISTANCE, 3));
-    float velocity = 0.96f * sqrt(G * STAR_MASS / PLANET_STAR_DISTANCE);
+    float velocity = 0.8f * sqrt(G * STAR_MASS / PLANET_STAR_DISTANCE);
     std::cout << "Planet angle velocity : " << angle_velocity << std::endl;
 
     /*tidal_system.addObject(TidalSystem::PlanetType::Planet, { STAR_POSITION.x + 400, STAR_POSITION.y + 300, 0 },

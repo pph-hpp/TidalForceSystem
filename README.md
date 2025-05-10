@@ -46,13 +46,7 @@ W/A/S/D：移动视角
 鼠标拖拽：旋转视图
 
 - **行星逐渐解体形成星环**
-<video controls width="500" style="display: block; margin: auto;">
-  <source src="./img/disintegration.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="./img/disintegration.gif" width="50%" style="display: block; margin: auto;">
 
 - **行星掠过恒星附近**
-<video controls width="500" style="display: block; margin: auto;">
-  <source src="./img/Grazing.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="./img/Grazing.gif" width="50%" style="display: block; margin: auto;">
